@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moon | Embedded Systems Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruksana Shaik | Embedded Explorer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-  <header>
-    <h1>🌙 Shaik Ruksana</h1>
-    <p>Embedded Systems Enthusiast | Product Thinker | Learner</p>
+
+<body class="light-theme">
+
+
+  <!-- Header -->
+  <header class="navbar glassy">
+    <div class="logo">🌙 Ruksana</div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Projects</a>
-      <a href="#">Resume</a>
-      <a href="#">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <!--<a href="resume.pdf" target="_blank">Resume</a>-->
+      <a href="progress.html">Progress</a>
+      <a> </a>
+      <button id="theme-toggle" title="Toggle Dark Mode">🌙</button>
     </nav>
   </header>
 
-  <main>
-    <section>
-      <h2>About Me</h2>
-      <p>Hi! I'm Ruksana. I build embedded solutions from the ground up — logic-first, design-light, personality-rich. From bare-metal drivers to CSR systems, I turn ideas into working tech.</p>
-    </section>
-  </main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="typing" id="typing"></div>
+    <p>Embedded Systems Explorer · Creative Coder · Dreamer</p>
 
+    <div class="cta-buttons">
+      <a href="projects.html" class="btn">View Projects</a>
+      <!--<a href="resume.pdf" target="_blank" class="btn secondary">Download Resume</a>-->
+    </div>
+  </section>
+
+  <!-- About Glassy Card -->
+  <section class="intro-card">
+    <h2>✨ About Me</h2>
+    <p>
+      I'm currently diving deep into the world of Embedded Systems at CDAC. Passionate about microcontrollers, real-time software, and building meaningful tech. I love blending logic with creativity and exploring new frontiers — one C program at a time!
+    </p>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>“Wandering the tech skies — one byte at a time 🌙”</p>
+    <img src="assets/moon.svg" alt="Moon" class="moon-img" />
+    <p>“Shine quietly, like the moon.”</p>
   </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script src="js/constellation.js"></script>
 </body>
 </html>
