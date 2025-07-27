@@ -1,58 +1,799 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ruksana Shaik | Embedded Explorer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaik Ruksana - Embedded Systems Engineer & Product Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2c2c2c;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent: #3498db;
+            --accent-hover: #2980b9;
+            --border: #404040;
+            --card-bg: #252525;
+        }
+
+        .light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --accent: #3498db;
+            --accent-hover: #2980b9;
+            --border: #dee2e6;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-alt {
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .project-type {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-section {
+            margin-bottom: 1rem;
+        }
+
+        .tech-section h5 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .timeline-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
 </head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Shaik Ruksana</div>
+                <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </header>
 
-<body class="light-theme">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-icon">🔧</div>
+            <h1>Embedded Systems Engineer</h1>
+            <h2>& Product Manager</h2>
+            <p>Passionate about bridging hardware-software integration with hands-on experience in microcontroller programming, real-time systems, and IoT applications. Currently pursuing advanced embedded system design while applying technical expertise to product development.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">📄 Download Resume</a>
+                <a href="#projects" class="btn btn-outline">🚀 Explore Projects</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- About Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    I am an enthusiastic and hands-on Embedded Systems professional with a strong foundation in microcontroller programming, circuit simulation, and embedded C development. Currently pursuing a PG Diploma in Embedded System Design from CDAC Hyderabad, I have experience building real-time, hardware-integrated projects with practical applications in defense and logistics.
+                </p>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    My journey has taken me from embedded development to product management, where I apply my technical depth to bridge the gap between complex technical requirements and business objectives. This unique combination allows me to understand both the intricacies of hardware-software integration and the strategic aspects of product development.
+                </p>
+                <p style="font-size: 1.1rem;">
+                    I am a fast learner with a passion for problem-solving and innovation, seeking opportunities to contribute to cutting-edge embedded product development in dynamic tech environments, particularly in IoT, Edge Computing, and Automotive Electronics.
+                </p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Header -->
-  <header class="navbar glassy">
-    <div class="logo">🌙 Ruksana</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <!--<a href="resume.pdf" target="_blank">Resume</a>-->
-      <a href="progress.html">Progress</a>
-      <a> </a>
-      <button id="theme-toggle" title="Toggle Dark Mode">🌙</button>
-    </nav>
-  </header>
+    <!-- Skills Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="skill-category">
+                        <h4>💻 Programming Languages</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">Embedded C</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">ARM Assembly</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="skill-category">
+                        <h4>🔧 Microcontrollers</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">ARM Cortex-M (STM32)</span>
+                            <span class="skill-tag">ESP32</span>
+                            <span class="skill-tag">PIC</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="skill-category">
+                        <h4>📡 Communication Protocols</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">UART</span>
+                            <span class="skill-tag">SPI</span>
+                            <span class="skill-tag">I2C</span>
+                            <span class="skill-tag">CAN Bus</span>
+                            <span class="skill-tag">USB</span>
+                            <span class="skill-tag">Ethernet</span>
+                            <span class="skill-tag">MQTT</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="skill-category">
+                        <h4>🛠️ Development Tools</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Keil uVision</span>
+                            <span class="skill-tag">STM32CubeIDE</span>
+                            <span class="skill-tag">Oscilloscope</span>
+                            <span class="skill-tag">Logic Analyzer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="skill-category">
+                        <h4>⚡ Operating Systems</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">FreeRTOS</span>
+                            <span class="skill-tag">Embedded Linux</span>
+                            <span class="skill-tag">Device Drivers</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="skill-category">
+                        <h4>🔬 Additional Expertise</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">IoT Applications</span>
+                            <span class="skill-tag">Secure Firmware</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Agile Methodologies</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="typing" id="typing"></div>
-    <p>Embedded Systems Explorer · Creative Coder · Dreamer</p>
+    <!-- Projects Section -->
+    <section class="section section-alt" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Embedded Projects</h2>
+            <div class="grid grid-3">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📡</div>
+                        <div class="project-type">Diploma Final Year Project</div>
+                    </div>
+                    <div class="project-title">Gesture Controlled Robotic Vehicle</div>
+                    <div class="project-description">
+                        Wireless robotic vehicle controlled via hand gestures using accelerometer sensors for precise motion detection in hazardous environments.
+                    </div>
+                    <div class="tech-section">
+                        <h5>Technologies Used:</h5>
+                        <div class="skills-list">
+                            <span class="skill-tag">Embedded C</span>
+                            <span class="skill-tag">Keil uVision</span>
+                            <span class="skill-tag">RF Communication</span>
+                            <span class="skill-tag">Sensor Integration</span>
+                            <span class="skill-tag">Real-time Control</span>
+                        </div>
+                    </div>
+                    <div class="tech-section">
+                        <h5>Applications:</h5>
+                        <div class="skills-list">
+                            <span class="skill-tag">Defense Surveillance</span>
+                            <span class="skill-tag">Hazardous Area Exploration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🌐</div>
+                        <div class="project-type">B.E. Final Year Project</div>
+                    </div>
+                    <div class="project-title">IoT-Based Reefer Monitoring System</div>
+                    <div class="project-description">
+                        Real-time communication system utilizing GSM modules for temperature monitoring and logistics tracking in refrigerated transport.
+                    </div>
+                    <div class="tech-section">
+                        <h5>Technologies Used:</h5>
+                        <div class="skills-list">
+                            <span class="skill-tag">Embedded C</span>
+                            <span class="skill-tag">Proteus Simulation</span>
+                            <span class="skill-tag">GSM Modules</span>
+                            <span class="skill-tag">IoT Protocols</span>
+                            <span class="skill-tag">Temperature Sensors</span>
+                        </div>
+                    </div>
+                    <div class="tech-section">
+                        <h5>Applications:</h5>
+                        <div class="skills-list">
+                            <span class="skill-tag">Food Transport</span>
+                            <span class="skill-tag">Cold Chain Management</span>
+                            <span class="skill-tag">Event Logistics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🤖</div>
+                    <div class="project-type">IoT Project</div>
+                </div>
+                <div class="project-title">Smart Metal Detection System</div>
+                <div class="project-description">
+                    IoT-enabled metal detection and access control system using MQTT and Adafruit dashboard. Detects metal objects with IR and metal sensors, controls barrier automatically via relay, and provides real-time monitoring with manual override.
+                </div>
+                <div class="tech-section">
+                    <h5>Technologies Used:</h5>
+                    <div class="skills-list">
+                        <span class="skill-tag">MQTT</span>
+                        <span class="skill-tag">Adafruit IO</span>
+                        <span class="skill-tag">Embedded C</span>
+                        <span class="skill-tag">IR Sensors</span>
+                        <span class="skill-tag">Metal Detector</span>
+                        <span class="skill-tag">Relay Control</span>
+                        <span class="skill-tag">Real-time Dashboard</span>
+                    </div>
+                </div>
+                <div class="tech-section">
+                    <h5>Applications:</h5>
+                    <div class="skills-list">
+                        <span class="skill-tag">Security Checkpoints</span>
+                        <span class="skill-tag">Industrial Automation</span>
+                        <span class="skill-tag">Smart Barriers</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="cta-buttons">
-      <a href="projects.html" class="btn">View Projects</a>
-      <!--<a href="resume.pdf" target="_blank" class="btn secondary">Download Resume</a>-->
-    </div>
-  </section>
+            </div>
+        </div>
+    </section>
 
-  <!-- About Glassy Card -->
-  <section class="intro-card">
-    <h2>✨ About Me</h2>
-    <p>
-      I'm currently diving deep into the world of Embedded Systems at CDAC. Passionate about microcontrollers, real-time software, and building meaningful tech. I love blending logic with creativity and exploring new frontiers — one C program at a time!
-    </p>
-  </section>
+    <!-- Experience Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="card">
+                <div class="card-title">Associate Process Leader (Product Manager)</div>
+                <div class="card-subtitle">Brane Enterprises • Sep 2023 - Feb 2025</div>
+                <p style="margin-bottom: 2rem;">
+                    Bridged technical development and business requirements by applying embedded systems thinking to digital product development. Spearheaded research, analysis, and process design for internal digital solutions while collaborating with cross-functional teams.
+                </p>
+                <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Key Projects with Technical Focus:</h4>
+                <div class="timeline-item">
+                    <div class="timeline-title">Content Rights Management System</div>
+                    <div class="timeline-desc">Blockchain-based solution for secure media content rights management with enhanced transparency and data integrity.</div>
+                    <div style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">Technical Focus: Security protocols, distributed systems architecture</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Bloodline Mobile & Web App</div>
+                    <div class="timeline-desc">End-to-end blood donation platform enabling seamless requests and fulfillment between users and hospitals.</div>
+                    <div style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">Technical Focus: Real-time data synchronization, user authentication systems</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">APLDA – Livestock Monitoring Dashboard</div>
+                    <div class="timeline-desc">Real-time tracking system for livestock data to identify and prevent stock leakage in rural supply chains.</div>
+                    <div style="margin-top: 0.5rem; color: var(--accent); font-weight: 600;">Technical Focus: IoT data processing, real-time monitoring systems</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <img src="assets/moon.svg" alt="Moon" class="moon-img" />
-    <p>“Shine quietly, like the moon.”</p>
-  </footer>
+    <!-- Education Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Education & Continuous Learning</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">PG Diploma in Embedded System Design</div>
+                    <div class="card-subtitle">Centre for Development of Advanced Computing (CDAC), Hyderabad • Expected: August 2025</div>
+                    <p>Comprehensive training covering Embedded C programming, Data Structures, ARM Cortex microcontrollers, STM32 development, Real-Time Operating Systems (RTOS), Linux fundamentals, Device Driver development, and Internet of Things (IoT) applications.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Bachelor of Engineering – Electronics and Communication</div>
+                    <div class="card-subtitle">Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad • 2020-2023 • GPA: 8.91</div>
+                    <p>Strong foundation in electronics, communication systems, and embedded applications with focus on practical implementation and system design.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Diploma in Electronics and Communication Engineering</div>
+                    <div class="card-subtitle">Central Institute of Tool Design, Balanagar, Hyderabad • 2017-2019 • 91.5%</div>
+                    <p>Foundational knowledge in electronics and communication with hands-on experience in circuit design and embedded systems basics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Scripts -->
-  <script src="js/script.js"></script>
-  <script src="js/constellation.js"></script>
+    <!-- Future Vision Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Future Vision & Goals</h2>
+            <div class="card">
+                <div class="grid grid-3">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🌐</div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-primary);">IoT & Edge Computing</h3>
+                        <p style="color: var(--text-secondary);">Developing intelligent edge devices and IoT solutions for next-generation applications</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🚗</div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Automotive Electronics</h3>
+                        <p style="color: var(--text-secondary);">Contributing to autonomous vehicle systems and advanced driver assistance technologies</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔧</div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Hardware-Software Integration</h3>
+                        <p style="color: var(--text-secondary);">Bridging the gap between complex hardware requirements and software implementation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="footer" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-secondary);">
+                Interested in embedded systems development or product management opportunities? Let's discuss how we can work together.
+            </p>
+            <div class="contact-buttons">
+                <a href="mailto:shaikruksana004@gmail.com" class="btn btn-primary">📧 Email Me</a>
+                <a href="https://www.linkedin.com/in/shaik-ruksana-4b4868213/" class="btn btn-outline">💼 LinkedIn</a>
+                <a href="https://github.com/mystery1234" class="btn btn-outline">💻 GitHub</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 Shaik Ruksana. All rights reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.add('light-mode');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.getElementById('themeToggle');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation classes on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
+
